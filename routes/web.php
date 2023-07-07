@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SpendingsController;
+use App\Http\Controllers\IncomesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// 支出のルーティング
+Route::resource('spendings', SpendingsController::class);
+
+// 収入のルーティング
+Route::resource('incomes', IncomesController::class);
