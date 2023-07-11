@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Income;
 use Illuminate\Http\Request;
 
 class IncomesController extends Controller
@@ -28,8 +29,15 @@ class IncomesController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+        'amount' => 'required|integer',
+        'date' => 'required|date',
+        'note' => 'required|string',
+      ]);
+
         $income = new Income;
         $income->fill($request->all())->save();
+
         return redirect('/incomes');
     }
 
